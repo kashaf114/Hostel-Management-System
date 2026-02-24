@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>Hostel Admin</h2>
+    <ul>
+        <li><a href="/dashboard" class="active">Dashboard</a></li>
+        <li><a href="/students">Students</a></li>
+        <li><a href="/rooms">Rooms</a></li>
+        <li><a href="/fees">Fees</a></li>
+        <li><a href="/">Logout</a></li>
+    </ul>
+</div>
+
+<div class="main">
+    <div class="topbar">
+        <h1>Dashboard Overview</h1>
+    </div>
+
+    <div class="cards">
+        <div class="card">
+            <h3>Total Students</h3>
+            <p>{{ total_students }}</p>
+        </div>
+        <div class="card">
+            <h3>Total Rooms</h3>
+            <p>{{ total_rooms }}</p>
+        </div>
+        <div class="card">
+            <h3>Available Rooms</h3>
+            <p>{{ available_rooms }}</p>
+        </div>
+        <div class="card">
+            <h3>Total Fees</h3>
+            <p>₹{{ total_fees }}</p>
+        </div>
+        <div class="card">
+            <h3>Pending Fees</h3>
+            <p>₹{{ pending_fees }}</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

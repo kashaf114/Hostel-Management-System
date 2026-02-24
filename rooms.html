@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rooms</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>Hostel Admin</h2>
+    <ul>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/students">Students</a></li>
+        <li><a href="/rooms" class="active">Rooms</a></li>
+        <li><a href="/fees">Fees</a></li>
+        <li><a href="/">Logout</a></li>
+    </ul>
+</div>
+
+<div class="main">
+    <div class="topbar">
+        <h1>Rooms Information</h1>
+    </div>
+
+    <form method="POST">
+        <input type="text" name="room_number" placeholder="Room Number" required>
+        <input type="text" name="room_type" placeholder="Capacity" required>
+
+        <select name="room_status" required>
+            <option value="Available">Available</option>
+            <option value="Occupied">Occupied</option>
+        </select>
+
+        <button type="submit">Add Room</button>
+    </form>
+
+    <br><br>
+
+    <table>
+        <tr>
+            <th>Room No</th>
+            <th>Capacity</th>
+            <th>Status</th>
+        </tr>
+
+        {% for room in rooms %}
+        <tr>
+            <td>{{ room.room_number }}</td>
+            <td>{{ room.room_type }}</td>
+            <td>{{ room.room_status }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+</body>
+</html>

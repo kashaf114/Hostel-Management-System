@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Students</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>Hostel Admin</h2>
+    <ul>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/students" class="active">Students</a></li>
+        <li><a href="/rooms">Rooms</a></li>
+        <li><a href="/fees">Fees</a></li>
+        <li><a href="/">Logout</a></li>
+    </ul>
+</div>
+
+<div class="main">
+    <div class="topbar">
+        <h1>Students List</h1>
+    </div>
+
+    <!-- STUDENT REGISTRATION FORM -->
+    <form method="POST" action="/students">
+        <input type="text" name="student_id" placeholder="Student ID" required>
+        <input type="text" name="name" placeholder="Student Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+
+        <input type="text" name="department" placeholder="Department / Class" required>
+
+        <select name="year" required>
+            <option value="">Select Year</option>
+            <option value="1st Year">1st Year</option>
+            <option value="2nd Year">2nd Year</option>
+            <option value="3rd Year">3rd Year</option>
+        </select>
+
+        <select name="gender" required>
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+
+        <input type="text" name="address" placeholder="Address" required>
+
+        <input type="number" name="room" placeholder="Room No" required>
+        <input type="text" name="contact" placeholder="Contact" required>
+        <input type="date" name="admission_date" required>
+        <input type="number" name="fees_amount" placeholder="Fees Amount" required>
+
+        <select name="fees_status" required>
+            <option value="Paid">Paid</option>
+            <option value="Pending">Pending</option>
+        </select>
+
+        <button type="submit">Add Student</button>
+    </form>
+
+    <br>
+
+    <!-- STUDENT TABLE -->
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Department</th>
+            <th>Year</th>
+            <th>Gender</th>
+            <th>Address</th>
+            <th>Room</th>
+            <th>Contact</th>
+            <th>Admission Date</th>
+            <th>Fees Amount</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+
+        {% for student in students %}
+        <tr>
+            <td>{{ student.student_id }}</td>
+            <td>{{ student.name }}</td>
+            <td>{{ student.email }}</td>
+            <td>{{ student.department }}</td>
+            <td>{{ student.year }}</td>
+            <td>{{ student.gender }}</td>
+            <td>{{ student.address }}</td>
+            <td>{{ student.room }}</td>
+            <td>{{ student.contact }}</td>
+            <td>{{ student.admission_date }}</td>
+            <td>{{ student.fees_amount }}</td>
+            <td>{{ student.fees_status }}</td>
+            <td>
+                <a href="/edit_student/{{student.student_id}}">Edit</a> |
+                <a href="/delete_student/{{student.student_id}}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+</body>
+</html>

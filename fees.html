@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fees</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>Hostel Admin</h2>
+    <ul>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/students">Students</a></li>
+        <li><a href="/rooms">Rooms</a></li>
+        <li><a href="/fees" class="active">Fees</a></li>
+        <li><a href="/">Logout</a></li>
+    </ul>
+</div>
+
+<div class="main">
+    <div class="topbar">
+        <h1>Fees Management</h1>
+    </div>
+
+    <form method="POST">
+        <input type="text" name="student_name" placeholder="Student Name" required>
+        <input type="text" name="room_number" placeholder="Room Number" required>
+        <input type="number" name="amount" placeholder="Amount" required>
+
+        <select name="status" required>
+            <option value="Paid">Paid</option>
+            <option value="Pending">Pending</option>
+        </select>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <br><br>
+
+    <table>
+        <tr>
+            <th>Student Name</th>
+            <th>Room Number</th>
+            <th>Amount</th>
+            <th>Status</th>
+        </tr>
+
+        {% for fee in fees %}
+        <tr>
+            <td>{{ fee.student_name }}</td>
+            <td>{{ fee.room_number }}</td>
+            <td>{{ fee.amount }}</td>
+            <td>{{ fee.status }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+</body>
+</html>

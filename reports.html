@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reports</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>Hostel Admin</h2>
+    <ul>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/students">Students</a></li>
+        <li><a href="/rooms">Rooms</a></li>
+        <li><a href="/fees">Fees</a></li>
+        <li><a href="/reports" class="active">Reports</a></li>
+        <li><a href="/">Logout</a></li>
+    </ul>
+</div>
+
+<div class="main">
+    <div class="topbar">
+        <h1>Reports</h1>
+    </div>
+
+    <h3>Student Report</h3>
+    <p>Total Students: {{ students|length }}</p>
+
+    <h3>Room Report</h3>
+    <p>Total Rooms: {{ rooms|length }}</p>
+
+    <h3>Fees Report</h3>
+    <p>Total Records: {{ fees|length }}</p>
+
+</div>
+
+</body>
+</html>
